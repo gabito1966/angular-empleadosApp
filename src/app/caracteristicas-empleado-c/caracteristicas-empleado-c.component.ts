@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ServicioEmpleadosService } from '../servicio-empleados.service';
+//import { ServicioEmpleadosService } from '../servicio-empleados.service';
 
 @Component({
   selector: 'app-caracteristicas-empleado-c',
@@ -7,20 +7,19 @@ import { ServicioEmpleadosService } from '../servicio-empleados.service';
   styleUrls: ['./caracteristicas-empleado-c.component.css']
 })
 export class CaracteristicasEmpleadoCComponent implements OnInit{
-
-  @Output() caracteristicasEmpleados = new EventEmitter<string>();
-
-  constructor(private miServicio:ServicioEmpleadosService){
-
-  }
-
   ngOnInit(): void {
     
   }
 
+  @Output() caracteristicasEmpleados = new EventEmitter<string>();
+
+  //constructor(private miServicio:ServicioEmpleadosService){}
+
+  
+
   agregaCaracteristicas(value: string) {
-    this.miServicio.muestraMensaje(value);
-    this.caracteristicasEmpleados.emit(value);
+   // this.miServicio.muestraMensaje(value);
+    //this.caracteristicasEmpleados.emit(value);
   }
 
 }
