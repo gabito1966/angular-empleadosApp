@@ -8,7 +8,7 @@ import { CookieService } from 'ngx-cookie-service';
 @Injectable()
 export class LoginService {
 
-    constructor(private router:Router){}
+    constructor(private router:Router, private cookies:CookieService){}
 
     token:string;
 
@@ -22,7 +22,7 @@ export class LoginService {
                     token =>{
 
                         this.token = token;
-                        //this.cookies.set("token", this.token);
+                        this.cookies.set("token", this.token);
                         this.router.navigate(['/']);
                     }
                 )
@@ -30,20 +30,20 @@ export class LoginService {
         )
     }
     getIdToken(){
-        return this.token;
-       // return this.cookies.get("token");
+        //return this.token;
+       return this.cookies.get("token");
     }
 
     estaLogueado(){
-        return this.token;
-        //return this.cookies.get("token");
+        //return this.token;
+        return this.cookies.get("token");
     }
 
     logout(){
         firebase.auth().signOut().then(()=>{
 
             this.token="";
-            //this.cookies.set("token", this.token);
+            this.cookies.set("token", this.token);
             this.router.navigate(['/']);
             window.location.reload();
         });
